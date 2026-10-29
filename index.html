@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mock PAT Mathematics Assessment (45 Items)</title>
+  <style>
+    body { font-family: 'Segoe UI', Arial, sans-serif; background: #f0f4f8; margin: 0; padding: 20px; color: #2d3748; }
+    .container { max-width: 800px; margin: 0 auto; background: #ffffff; padding: 30px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+    .page { display: none; }
+    .page.active { display: block; }
+    h1 { color: #2b6cb0; text-align: center; margin-bottom: 10px; }
+    h2 { color: #2d3748; border-bottom: 2px solid #e2e8f0; padding-bottom: 8px; font-size: 20px; }
+    label { font-weight: bold; display: block; margin-top: 15px; }
+    input[type="text"], select { width: 100%; padding: 12px; margin-top: 5px; border: 1px solid #cbd5e0; border-radius: 6px; box-sizing: border-box; font-size: 16px; }
+    .option-btn { display: block; width: 100%; padding: 14px 18px; margin: 12px 0; text-align: left; background: #edf2f7; border: 2px solid #cbd5e0; border-radius: 8px; cursor: pointer; font-size: 16px; transition: all 0.2s; }
+    .option-btn:hover { background: #e2e8f0; }
+    .option-btn.selected { background: #ebf8ff; border-color: #3182ce; font-weight: bold; }
+    .nav-btns { display: flex; justify-content: space-between; margin-top: 25px; }
+    button.btn { padding: 12px 24px; background: #3182ce; color: white; border: none; border-radius: 6px; font-size: 16px; cursor: pointer; }
+    button.btn:disabled { background: #cbd5e0; cursor: not-allowed; }
+    .img-container { text-align: center; margin: 20px 0; background: #ffffff; padding: 15px; border-radius: 8px; border: 1px solid #e2e8f0; }
+    .img-container img { max-width: 100%; height: auto; max-height: 250px; border-radius: 6px; display: block; margin: 0 auto; }
+    .data-table { width: 100%; border-collapse: collapse; margin: 15px 0; font-size: 15px; }
+    .data-table th, .data-table td { border: 1px solid #cbd5e0; padding: 8px 12px; text-align: center; }
+    .data-table th { background-color: #ebf8ff; color: #2b6cb0; }
+    .progress-bar { width: 100%; background: #e2e8f0; height: 10px; border-radius: 5px; margin-bottom: 20px; overflow: hidden; }
+    .progress-fill { height: 100%; background: #3182ce; width: 0%; transition: width 0.3s; }
+    .feedback-box { background: #f7fafc; border-left: 4px solid #3182ce; padding: 20px; margin-top: 20px; border-radius: 6px; }
+    .badge { display: inline-block; padding: 6px 12px; background: #48bb78; color: white; border-radius: 20px; font-weight: bold; margin-bottom: 10px; }
+    .teacher-section { margin-top: 30px; padding-top: 20px; border-top: 2px dashed #cbd5e0; text-align: center; }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <div class="progress-bar"><div class="progress-fill" id="progress"></div></div>
+
+  <!-- START PAGE -->
+  <div class="page active" id="page-0">
+    <h1>Mock PAT Mathematics Assessment</h1>
+    <p>Welcome! Please enter your name and year level to begin your assessment.</p>
+    <label for="student-name">Your Full Name:</label>
+    <input type="text" id="student-name" placeholder="e.g. Alex Tui">
+    
+    <label for="student-year">Your Year Level:</label>
+    <select id="student-year">
+      <option value="">-- Select Year Level --</option>
+      <option value="Year 7">Year 7</option>
+      <option value="Year 8">Year 8</option>
+    </select>
+    
+    <div class="nav-btns" style="justify-content: flex-end;">
+      <button class="btn" onclick="startTest()">Start Test &#8594;</button>
+    </div>
+  </div>
+
+  <form id="test-form">
+    <div class="page" id="page-1">
+      <h2>Question 1 of 45 (Number Operations)</h2>
+      <p>Calculate: 806 + 159 + 350</p>
+      <button type="button" class="option-btn" onclick="selectOpt(1, 'A')">A) 1,215</button>
+      <button type="button" class="option-btn" onclick="selectOpt(1, 'B')">B) 1,315</button>
+      <button type="button" class="option-btn" onclick="selectOpt(1, 'C')">C) 1,205</button>
+      <button type="button" class="option-btn" onclick="selectOpt(1, 'D')">D) 1,325</button>
+    </div>
+
+    <div class="page" id="page-2">
+      <h2>Question 2 of 45 (Algebra)</h2>
+      <p>Hemi has <em>n</em> marbles. Wiremu has 5 more than double Hemi's amount. Which expression represents Wiremu's marbles?</p>
+      <button type="button" class="option-btn" onclick="selectOpt(2, 'A')">A) 5n + 2</button>
+      <button type="button" class="option-btn" onclick="selectOpt(2, 'B')">B) 2n + 5</button>
+      <button type="button" class="option-btn" onclick="selectOpt(2, 'C')">C) n + 10</button>
+      <button type="button" class="option-btn" onclick="selectOpt(2, 'D')">D) 2(n + 5)</button>
+    </div>
+
+    <div class="page" id="page-3">
+      <h2>Question 3 of 45 (Statistics & Probability)</h2>
+      <p>What is the probability of rolling an odd number on a standard 6-sided die?</p>
+      <button type="button" class="option-btn" onclick="selectOpt(3, 'A')">A) 1/6</button>
+      <button type="button" class="option-btn" onclick="selectOpt(3, 'B')">B) 1/3</button>
+      <button type="button" class="option-btn" onclick="selectOpt(3, 'C')">C) 1/2</button>
+      <button type="button" class="option-btn" onclick="selectOpt(3, 'D')">D) 2/3</button>
+    </div>
+
+    <div class="page" id="page-4">
+      <h2>Question 4 of 45 (Rational Numbers)</h2>
+      <p>In a regular octagon, 2 of the 8 equal sections are shaded. What percentage of the octagon is shaded?</p>
+      <button type="button" class="option-btn" onclick="selectOpt(4, 'A')">A) 20%</button>
+      <button type="button" class="option-btn" onclick="selectOpt(4, 'B')">B) 25%</button>
+      <button type="button" class="option-btn" onclick="selectOpt(4, 'C')">C) 40%</button>
+      <button type="button" class="option-btn" onclick="selectOpt(4, 'D')">D) 12.5%</button>
+    </div>
+
+    <div class="page" id="page-5">
+      <h2>Question 5 of 45 (Rational Numbers)</h2>
+      <p>Calculate: 8.25 ÷ 3</p>
+      <button type="button" class="option-btn" onclick="selectOpt(5, 'A')">A) 2.75</button>
+      <button type="button" class="option-btn" onclick="selectOpt(5, 'B')">B) 2.65</button>
+      <button type="button" class="option-btn" onclick="selectOpt(5, 'C')">C) 2.85</button>
+      <button type="button" class="option-btn" onclick="selectOpt(5, 'D')">D) 3.15</button>
+    </div>
+
+    <div class="page" id="page-6">
+      <h2>Question 6 of 45 (Rational Numbers)</h2>
+      <p>Order these decimals from smallest to largest: 9.55, 9.345, 9.08, 9.4</p>
+      <button type="button" class="option-btn" onclick="selectOpt(6, 'A')">A) 9.08, 9.345, 9.4, 9.55</button>
+      <button type="button" class="option-btn" onclick="selectOpt(6, 'B')">B) 9.08, 9.4, 9.345, 9.55</button>
+      <button type="button" class="option-btn" onclick="selectOpt(6, 'C')">C) 9.345, 9.08, 9.4, 9.55</button>
+      <button type="button" class="option-btn" onclick="selectOpt(6, 'D')">D) 9.08, 9.345, 9.55, 9.4</button>
+    </div>
+
+    <div class="page" id="page-7">
+      <h2>Question 7 of 45 (Rational Numbers)</h2>
+      <p>Find the value of x if x:8 is equivalent to 30:24.</p>
+      <button type="button" class="option-btn" onclick="selectOpt(7, 'A')">A) 8</button>
+      <button type="button" class="option-btn" onclick="selectOpt(7, 'B')">B) 10</button>
+      <button type="button" class="option-btn" onclick="selectOpt(7, 'C')">C) 6</button>
+      <button type="button" class="option-btn" onclick="selectOpt(7, 'D')">D) 12</button>
+    </div>
+
+    <div class="page" id="page-8">
+      <h2>Question 8 of 45 (Geometry)</h2>
+      <p>Which capital letter has horizontal line symmetry?</p>
+      <button type="button" class="option-btn" onclick="selectOpt(8, 'A')">A) A</button>
+      <button type="button" class="option-btn" onclick="selectOpt(8, 'B')">B) M</button>
+      <button type="button" class="option-btn" onclick="selectOpt(8, 'C')">C) H</button>
+      <button type="button" class="option-btn" onclick="selectOpt(8, 'D')">D) V</button>
+    </div>
+
+    <div class="page" id="page-9">
+      <h2>Question 9 of 45 (Rational Numbers)</h2>
+      <p>Mia bought items costing $1.40, $1.40, and $3.50. What was her total cost?</p>
+      <button type="button" class="option-btn" onclick="selectOpt(9, 'A')">A) $6.10</button>
+      <button type="button" class="option-btn" onclick="selectOpt(9, 'B')">B) $6.30</button>
+      <button type="button" class="option-btn" onclick="selectOpt(9, 'C')">C) $5.30</button>
+      <button type="button" class="option-btn" onclick="selectOpt(9, 'D')">D) $6.50</button>
+    </div>
+
+    <div class="page" id="page-10">
+      <h2>Question 10 of 45 (Number Operations)</h2>
+      <p>A book originally had 47 pages. Rawiri read 26 pages. How many pages remain unread?</p>
+      <button type="button" class="option-btn" onclick="selectOpt(10, 'A')">A) 21 pages</button>
+      <button type="button" class="option-btn" onclick="selectOpt(10, 'B')">B) 19 pages</button>
+      <button type="button" class="option-btn" onclick="selectOpt(10, 'C')">C) 23 pages</button>
+      <button type="button" class="option-btn" onclick="selectOpt(10, 'D')">D) 22 pages</button>
+    </div>
+
+    <div class="page" id="page-11">
+      <h2>Question 11 of 45 (Rational Numbers)</h2>
+      <p>How many apples is ¾ of 12 apples?</p>
+      <button type="button" class="option-btn" onclick="selectOpt(11, 'A')">A) 8 apples</button>
+      <button type="button" class="option-btn" onclick="selectOpt(11, 'B')">B) 9 apples</button>
+      <button type="button" class="option-btn" onclick="selectOpt(11, 'C')">C) 10 apples</button>
+      <button type="button" class="option-btn" onclick="selectOpt(11, 'D')">D) 6 apples</button>
+    </div>
+
+    <div class="page" id="page-12">
+      <h2>Question 12 of 45 (Measurement)</h2>
+      <p>A protractor shows two angles aligned together measuring 45° and 45°. What is their total combined angle?</p>
+      <button type="button" class="option-btn" onclick="selectOpt(12, 'A')">A) 90°</button>
+      <button type="button" class="option-btn" onclick="selectOpt(12, 'B')">B) 80°</button>
+      <button type="button" class="option-btn" onclick="selectOpt(12, 'C')">C) 100°</button>
+      <button type="button" class="option-btn" onclick="selectOpt(12, 'D')">D) 45°</button>
+    </div>
+
+    <div class="page" id="page-13">
+      <h2>Question 13 of 45 (Measurement)</h2>
+      <div class="img-container">
+        <img src="https://images.nagwa.com/figures/explainers/856149132560/1.svg" alt="3D Rectangular Prism Block">
+      </div>
+      <p>How many unit cubes are needed to make a solid rectangular block measuring 4 cubes long, 3 cubes wide, and 2 cubes high?</p>
+      <button type="button" class="option-btn" onclick="selectOpt(13, 'A')">A) 24 cubes</button>
+      <button type="button" class="option-btn" onclick="selectOpt(13, 'B')">B) 18 cubes</button>
+      <button type="button" class="option-btn" onclick="selectOpt(13, 'C')">C) 12 cubes</button>
+      <button type="button" class="option-btn" onclick="selectOpt(13, 'D')">D) 20 cubes</button>
+    </div>
+
+    <div class="page" id="page-14">
+      <h2>Question 14 of 45 (Number Operations)</h2>
+      <p>Calculate: 4 x 13</p>
+      <button type="button" class="option-btn" onclick="selectOpt(14, 'A')">A) 42</button>
+      <button type="button" class="option-btn" onclick="selectOpt(14, 'B')">B) 52</button>
+      <button type="button" class="option-btn" onclick="selectOpt(14, 'C')">C) 48</button>
+      <button type="button" class="option-btn" onclick="selectOpt(14, 'D')">D) 56</button>
+    </div>
+
+    <div class="page" id="page-15">
+      <h2>Question 15 of 45 (Number Structures)</h2>
+      <p>What is 4,682,100 rounded to the nearest million?</p>
+      <button type="button" class="option-btn" onclick="selectOpt(15, 'A')">A) 4,000,000</button>
+      <button type="button" class="option-btn" onclick="selectOpt(15, 'B')">B) 5,000,000</button>
+      <button type="button" class="option-btn" onclick="selectOpt(15, 'C')">C) 4,700,000</button>
+      <button type="button" class="option-btn" onclick="selectOpt(15, 'D')">D) 4,600,000</button>
+    </div>
+
+    <div class="page" id="page-16">
+      <h2>Question 16 of 45 (Number Operations)</h2>
+      <p>If 5 x 13 = 65, what is 20 x 13 equal to?</p>
+      <button type="button" class="option-btn" onclick="selectOpt(16, 'A')">A) 260</button>
+      <button type="button" class="option-btn" onclick="selectOpt(16, 'B')">B) 195</button>
+      <button type="button" class="option-btn" onclick="selectOpt(16, 'C')">C) 130</button>
+      <button type="button" class="option-btn" onclick="selectOpt(16, 'D')">D) 320</button>
+    </div>
+
+    <div class="page" id="page-17">
+      <h2>Question 17 of 45 (Rational Numbers)</h2>
+      <p>Order these fractions from smallest to largest: 1/4, 1/2, 1/8, 3/4</p>
+      <button type="button" class="option-btn" onclick="selectOpt(17, 'A')">A) 1/8, 1/4, 1/2, 3/4</button>
+      <button type="button" class="option-btn" onclick="selectOpt(17, 'B')">B) 1/4, 1/8, 1/2, 3/4</button>
+      <button type="button" class="option-btn" onclick="selectOpt(17, 'C')">C) 1/8, 1/2, 1/4, 3/4</button>
+      <button type="button" class="option-btn" onclick="selectOpt(17, 'D')">D) 3/4, 1/2, 1/4, 1/8</button>
+    </div>
+
+    <div class="page" id="page-18">
+      <h2>Question 18 of 45 (Algebra)</h2>
+      <p>Find the next number in this pattern: 4, 9, 14, 19, ___</p>
+      <button type="button" class="option-btn" onclick="selectOpt(18, 'A')">A) 23</button>
+      <button type="button" class="option-btn" onclick="selectOpt(18, 'B')">B) 24</button>
+      <button type="button" class="option-btn" onclick="selectOpt(18, 'C')">C) 25</button>
+      <button type="button" class="option-btn" onclick="selectOpt(18, 'D')">D) 22</button>
+    </div>
+
+    <div class="page" id="page-19">
+      <h2>Question 19 of 45 (Measurement)</h2>
+      <p>Add 1.24 metres and 25 centimetres together. What is the total length in metres?</p>
+      <button type="button" class="option-btn" onclick="selectOpt(19, 'A')">A) 1.49 m</button>
+      <button type="button" class="option-btn" onclick="selectOpt(19, 'B')">B) 1.29 m</button>
+      <button type="button" class="option-btn" onclick="selectOpt(19, 'C')">C) 2.49 m</button>
+      <button type="button" class="option-btn" onclick="selectOpt(19, 'D')">D) 1.39 m</button>
+    </div>
+
+    <div class="page" id="page-20">
+      <h2>Question 20 of 45 (Number Operations)</h2>
+      <p>Solve: 45 - 17</p>
+      <button type="button" class="option-btn" onclick="selectOpt(20, 'A')">A) 28</button>
+      <button type="button" class="option-btn" onclick="selectOpt(20, 'B')">B) 27</button>
+      <button type="button" class="option-btn" onclick="selectOpt(20, 'C')">C) 38</button>
+      <button type="button" class="option-btn" onclick="selectOpt(20, 'D')">D) 26</button>
+    </div>
+
+    <div class="page" id="page-21">
+      <h2>Question 21 of 45 (Number Structures)</h2>
+      <p>Which number is 10 more than 1,372?</p>
+      <button type="button" class="option-btn" onclick="selectOpt(21, 'A')">A) 1,382</button>
+      <button type="button" class="option-btn" onclick="selectOpt(21, 'B')">B) 1,472</button>
+      <button type="button" class="option-btn" onclick="selectOpt(21, 'C')">C) 1,373</button>
+      <button type="button" class="option-btn" onclick="selectOpt(21, 'D')">D) 1,392</button>
+    </div>
+
+    <div class="page" id="page-22">
+      <h2>Question 22 of 45 (Number Operations)</h2>
+      <p>Find the missing number: [ &nbsp; ] - 450 = 550</p>
+      <button type="button" class="option-btn" onclick="selectOpt(22, 'A')">A) 100</button>
+      <button type="button" class="option-btn" onclick="selectOpt(22, 'B')">B) 1,000</button>
+      <button type="button" class="option-btn" onclick="selectOpt(22, 'C')">C) 900</button>
+      <button type="button" class="option-btn" onclick="selectOpt(22, 'D')">D) 1,100</button>
+    </div>
+
+    <div class="page" id="page-23">
+      <h2>Question 23 of 45 (Rational Numbers)</h2>
+      <p>What is the difference between 11.8°C and 8.5°C?</p>
+      <button type="button" class="option-btn" onclick="selectOpt(23, 'A')">A) 3.3°C</button>
+      <button type="button" class="option-btn" onclick="selectOpt(23, 'B')">B) 3.5°C</button>
+      <button type="button" class="option-btn" onclick="selectOpt(23, 'C')">C) 2.3°C</button>
+      <button type="button" class="option-btn" onclick="selectOpt(23, 'D')">D) 4.3°C</button>
+    </div>
+
+    <div class="page" id="page-24">
+      <h2>Question 24 of 45 (Measurement)</h2>
+      <p>A bus trip starts at 10:15 AM and ends at 11:10 AM. How many minutes long was the trip?</p>
+      <button type="button" class="option-btn" onclick="selectOpt(24, 'A')">A) 55 minutes</button>
+      <button type="button" class="option-btn" onclick="selectOpt(24, 'B')">B) 65 minutes</button>
+      <button type="button" class="option-btn" onclick="selectOpt(24, 'C')">C) 50 minutes</button>
+      <button type="button" class="option-btn" onclick="selectOpt(24, 'D')">D) 45 minutes</button>
+    </div>
+
+    <div class="page" id="page-25">
+      <h2>Question 25 of 45 (Measurement)</h2>
+      <p>Convert 8,000 millilitres (mL) into litres (L).</p>
+      <button type="button" class="option-btn" onclick="selectOpt(25, 'A')">A) 80 L</button>
+      <button type="button" class="option-btn" onclick="selectOpt(25, 'B')">B) 8 L</button>
+      <button type="button" class="option-btn" onclick="selectOpt(25, 'C')">C) 800 L</button>
+      <button type="button" class="option-btn" onclick="selectOpt(25, 'D')">D) 0.8 L</button>
+    </div>
+
+    <div class="page" id="page-26">
+      <h2>Question 26 of 45 (Rational Numbers)</h2>
+      <p>What is ⅓ of a set of 15 counters?</p>
+      <button type="button" class="option-btn" onclick="selectOpt(26, 'A')">A) 3</button>
+      <button type="button" class="option-btn" onclick="selectOpt(26, 'B')">B) 5</button>
+      <button type="button" class="option-btn" onclick="selectOpt(26, 'C')">C) 10</button>
+      <button type="button" class="option-btn" onclick="selectOpt(26, 'D')">D) 6</button>
+    </div>
+
+    <div class="page" id="page-27">
+      <h2>Question 27 of 45 (Geometry)</h2>
+      <div class="img-container">
+        <img src="https://encrypted-tbn3.gstatic.com/licensed-image?q=tbn:ANd9GcS-9q5_75KVZuaKghJmUizWEYmEuCG7e4h_KV_yebffexeG4tTgE4GeX-vZO3XZKinPTUk91GNp1lzDxO0" alt="Cube Net Diagram">
+      </div>
+      <p>How many square faces make up an unfolded net of a cube?</p>
+      <button type="button" class="option-btn" onclick="selectOpt(27, 'A')">A) 4</button>
+      <button type="button" class="option-btn" onclick="selectOpt(27, 'B')">B) 6</button>
+      <button type="button" class="option-btn" onclick="selectOpt(27, 'C')">C) 8</button>
+      <button type="button" class="option-btn" onclick="selectOpt(27, 'D')">D) 12</button>
+    </div>
+
+    <div class="page" id="page-28">
+      <h2>Question 28 of 45 (Number Operations)</h2>
+      <p>Calculate: 120 ÷ 4</p>
+      <button type="button" class="option-btn" onclick="selectOpt(28, 'A')">A) 30</button>
+      <button type="button" class="option-btn" onclick="selectOpt(28, 'B')">B) 40</button>
+      <button type="button" class="option-btn" onclick="selectOpt(28, 'C')">C) 25</button>
+      <button type="button" class="option-btn" onclick="selectOpt(28, 'D')">D) 35</button>
+    </div>
+
+    <div class="page" id="page-29">
+      <h2>Question 29 of 45 (Algebra)</h2>
+      <p>Solve for x: 3x + 4 = 19</p>
+      <button type="button" class="option-btn" onclick="selectOpt(29, 'A')">A) x = 6</button>
+      <button type="button" class="option-btn" onclick="selectOpt(29, 'B')">B) x = 5</button>
+      <button type="button" class="option-btn" onclick="selectOpt(29, 'C')">C) x = 7</button>
+      <button type="button" class="option-btn" onclick="selectOpt(29, 'D')">D) x = 4</button>
+    </div>
+
+    <div class="page" id="page-30">
+      <h2>Question 30 of 45 (Statistics & Probability)</h2>
+      <p>A bag contains 3 red marbles and 7 blue marbles. What is the probability of drawing a red marble?</p>
+      <button type="button" class="option-btn" onclick="selectOpt(30, 'A')">A) 3/10</button>
+      <button type="button" class="option-btn" onclick="selectOpt(30, 'B')">B) 7/10</button>
+      <button type="button" class="option-btn" onclick="selectOpt(30, 'C')">C) 3/7</button>
+      <button type="button" class="option-btn" onclick="selectOpt(30, 'D')">D) 1/3</button>
+    </div>
+
+    <div class="page" id="page-31">
+      <h2>Question 31 of 45 (Measurement)</h2>
+      <p>What is the perimeter of a rectangle with length 12 cm and width 5 cm?</p>
+      <button type="button" class="option-btn" onclick="selectOpt(31, 'A')">A) 17 cm</button>
+      <button type="button" class="option-btn" onclick="selectOpt(31, 'B')">B) 34 cm</button>
+      <button type="button" class="option-btn" onclick="selectOpt(31, 'C')">C) 60 cm</button>
+      <button type="button" class="option-btn" onclick="selectOpt(31, 'D')">D) 24 cm</button>
+    </div>
+
+    <div class="page" id="page-32">
+      <h2>Question 32 of 45 (Measurement)</h2>
+      <div class="img-container">
+        <img src="https://cmds-test.vedantu.com/prod/question-sets/3e05fcb7-01ff-4306-a177-1e08e65b29112517503267508511946.png" alt="Triangle Diagram">
+      </div>
+      <p>Find the area of a triangle with base 12 cm and height 5 cm.</p>
+      <button type="button" class="option-btn" onclick="selectOpt(32, 'A')">A) 60 cm²</button>
+      <button type="button" class="option-btn" onclick="selectOpt(32, 'B')">B) 30 cm²</button>
+      <button type="button" class="option-btn" onclick="selectOpt(32, 'C')">C) 24 cm²</button>
+      <button type="button" class="option-btn" onclick="selectOpt(32, 'D')">D) 17 cm²</button>
+    </div>
+
+    <div class="page" id="page-33">
+      <h2>Question 33 of 45 (Rational Numbers)</h2>
+      <p>Convert 0.75 into a simplified fraction.</p>
+      <button type="button" class="option-btn" onclick="selectOpt(33, 'A')">A) ½</button>
+      <button type="button" class="option-btn" onclick="selectOpt(33, 'B')">B) ¾</button>
+      <button type="button" class="option-btn" onclick="selectOpt(33, 'C')">C) ⅘</button>
+      <button type="button" class="option-btn" onclick="selectOpt(33, 'D')">D) ⅞</button>
+    </div>
+
+    <div class="page" id="page-34">
+      <h2>Question 34 of 45 (Number Structures)</h2>
+      <p>Which decimal is equivalent to ⅖?</p>
+      <button type="button" class="option-btn" onclick="selectOpt(34, 'A')">A) 0.2</button>
+      <button type="button" class="option-btn" onclick="selectOpt(34, 'B')">B) 0.4</button>
+      <button type="button" class="option-btn" onclick="selectOpt(34, 'C')">C) 0.25</button>
+      <button type="button" class="option-btn" onclick="selectOpt(34, 'D')">D) 0.5</button>
+    </div>
+
+    <div class="page" id="page-35">
+      <h2>Question 35 of 45 (Measurement)</h2>
+      <p>How many millilitres (mL) equal 3.5 Litres?</p>
+      <button type="button" class="option-btn" onclick="selectOpt(35, 'A')">A) 350 mL</button>
+      <button type="button" class="option-btn" onclick="selectOpt(35, 'B')">B) 3,500 mL</button>
+      <button type="button" class="option-btn" onclick="selectOpt(35, 'C')">C) 35,000 mL</button>
+      <button type="button" class="option-btn" onclick="selectOpt(35, 'D')">D) 35 mL</button>
+    </div>
+
+    <div class="page" id="page-36">
+      <h2>Question 36 of 45 (Geometry)</h2>
+      <p>How many interior degrees do all angles in a quadrilateral add up to?</p>
+      <button type="button" class="option-btn" onclick="selectOpt(36, 'A')">A) 180°</button>
+      <button type="button" class="option-btn" onclick="selectOpt(36, 'B')">B) 360°</button>
+      <button type="button" class="option-btn" onclick="selectOpt(36, 'C')">C) 270°</button>
+      <button type="button" class="option-btn" onclick="selectOpt(36, 'D')">D) 540°</button>
+    </div>
+
+    <div class="page" id="page-37">
+      <h2>Question 37 of 45 (Algebra)</h2>
+      <p>A sequence rule is "Multiply by 2 then add 1". If the input is 7, what is the output?</p>
+      <button type="button" class="option-btn" onclick="selectOpt(37, 'A')">A) 14</button>
+      <button type="button" class="option-btn" onclick="selectOpt(37, 'B')">B) 15</button>
+      <button type="button" class="option-btn" onclick="selectOpt(37, 'C')">C) 16</button>
+      <button type="button" class="option-btn" onclick="selectOpt(37, 'D')">D) 13</button>
+    </div>
+
+    <div class="page" id="page-38">
+      <h2>Question 38 of 45 (Statistics & Probability)</h2>
+      <p>Find the mean (average) of these test scores: 6, 8, 10, 12, 14</p>
+      <button type="button" class="option-btn" onclick="selectOpt(38, 'A')">A) 8</button>
+      <button type="button" class="option-btn" onclick="selectOpt(38, 'B')">B) 10</button>
+      <button type="button" class="option-btn" onclick="selectOpt(38, 'C')">C) 12</button>
+      <button type="button" class="option-btn" onclick="selectOpt(38, 'D')">D) 9</button>
+    </div>
+
+    <div class="page" id="page-39">
+      <h2>Question 39 of 45 (Number Operations)</h2>
+      <p>Calculate: 15% of $80</p>
+      <button type="button" class="option-btn" onclick="selectOpt(39, 'A')">A) $8</button>
+      <button type="button" class="option-btn" onclick="selectOpt(39, 'B')">B) $12</button>
+      <button type="button" class="option-btn" onclick="selectOpt(39, 'C')">C) $15</button>
+      <button type="button" class="option-btn" onclick="selectOpt(39, 'D')">D) $10</button>
+    </div>
+
+    <div class="page" id="page-40">
+      <h2>Question 40 of 45 (Measurement)</h2>
+      <div class="img-container">
+        <img src="https://mathangelwebsitestorage.blob.core.windows.net/mathangel-lesson-images/geometry-measures/area-of-a-trapezium/1)%20What%20is%20a%20Trapezium.webp" alt="Trapezium Diagram">
+      </div>
+      <p>Find the area of a trapezium with parallel sides 6 cm and 10 cm, and height 4 cm.</p>
+      <button type="button" class="option-btn" onclick="selectOpt(40, 'A')">A) 32 cm²</button>
+      <button type="button" class="option-btn" onclick="selectOpt(40, 'B')">B) 64 cm²</button>
+      <button type="button" class="option-btn" onclick="selectOpt(40, 'C')">C) 24 cm²</button>
+      <button type="button" class="option-btn" onclick="selectOpt(40, 'D')">D) 40 cm²</button>
+    </div>
+
+    <div class="page" id="page-41">
+      <h2>Question 41 of 45 (Rational Numbers)</h2>
+      <p>Calculate: 2.4 x 0.5</p>
+      <button type="button" class="option-btn" onclick="selectOpt(41, 'A')">A) 1.2</button>
+      <button type="button" class="option-btn" onclick="selectOpt(41, 'B')">B) 12</button>
+      <button type="button" class="option-btn" onclick="selectOpt(41, 'C')">C) 0.12</button>
+      <button type="button" class="option-btn" onclick="selectOpt(41, 'D')">D) 2.2</button>
+    </div>
+
+    <div class="page" id="page-42">
+      <h2>Question 42 of 45 (Number Structures)</h2>
+      <p>Which number is a prime number?</p>
+      <button type="button" class="option-btn" onclick="selectOpt(42, 'A')">A) 21</button>
+      <button type="button" class="option-btn" onclick="selectOpt(42, 'B')">B) 27</button>
+      <button type="button" class="option-btn" onclick="selectOpt(42, 'C')">C) 29</button>
+      <button type="button" class="option-btn" onclick="selectOpt(42, 'D')">D) 33</button>
+    </div>
+
+    <div class="page" id="page-43">
+      <h2>Question 43 of 45 (Measurement)</h2>
+      <p>A movie starts at 1:45 PM and lasts for 2 hours and 15 minutes. What time does it finish?</p>
+      <button type="button" class="option-btn" onclick="selectOpt(43, 'A')">A) 3:45 PM</button>
+      <button type="button" class="option-btn" onclick="selectOpt(43, 'B')">B) 4:00 PM</button>
+      <button type="button" class="option-btn" onclick="selectOpt(43, 'C')">C) 4:15 PM</button>
+      <button type="button" class="option-btn" onclick="selectOpt(43, 'D')">D) 3:30 PM</button>
+    </div>
+
+    <div class="page" id="page-44">
+      <h2>Question 44 of 45 (Algebra)</h2>
+      <p>Simplify: 4a + 3b + 2a - b</p>
+      <button type="button" class="option-btn" onclick="selectOpt(44, 'A')">A) 6a + 2b</button>
+      <button type="button" class="option-btn" onclick="selectOpt(44, 'B')">B) 6a + 4b</button>
+      <button type="button" class="option-btn" onclick="selectOpt(44, 'C')">C) 8ab</button>
+      <button type="button" class="option-btn" onclick="selectOpt(44, 'D')">D) 2a + 2b</button>
+    </div>
+
+    <div class="page" id="page-45">
+      <h2>Question 45 of 45 (Word Problem)</h2>
+      <p>A garden water tank measuring 2 m by 1 m by 1.5 m is full. If water is used at 300 Litres per day, how many days will the water last? (1 m³ = 1,000 L)</p>
+      <button type="button" class="option-btn" onclick="selectOpt(45, 'A')">A) 5 days</button>
+      <button type="button" class="option-btn" onclick="selectOpt(45, 'B')">B) 10 days</button>
+      <button type="button" class="option-btn" onclick="selectOpt(45, 'C')">C) 15 days</button>
+      <button type="button" class="option-btn" onclick="selectOpt(45, 'D')">D) 8 days</button>
+    </div>
+  </form>
+
+  <!-- NAVIGATION BUTTONS -->
+  <div class="nav-btns" id="quiz-nav" style="display:none;">
+    <button class="btn" id="prev-btn" onclick="changePage(-1)">&#8592; Previous</button>
+    <button class="btn" id="next-btn" onclick="changePage(1)">Next &#8594;</button>
+  </div>
+
+  <!-- RESULTS PAGE -->
+  <div class="page" id="page-results">
+    <h1>Assessment Completed!</h1>
+    <div class="feedback-box">
+      <div id="status-badge" class="badge">At Phase 3</div>
+      <p><strong>Student Name:</strong> <span id="res-name"></span> (<span id="res-year"></span>)</p>
+      <p><strong>Total Score:</strong> <span id="res-score"></span> / 45 (<span id="res-percent"></span>%)</p>
+      <p><strong>Estimated PAT Scale Score Band:</strong> <span id="res-scale"></span> PAT Scale Points</p>
+      <h3>Curriculum Feedback & Next Steps:</h3>
+      <p id="res-feedback-text"></p>
+    </div>
+  </div>
+
+  <!-- TEACHER BUTTON -->
+  <div class="teacher-section">
+    <button class="btn" style="background:#718096;" onclick="teacherAccess()">Teacher Access (PIN)</button>
+  </div>
+</div>
+
+<script>
+  let currentPage = 0;
+  const totalPages = 45;
+  const userAnswers = {};
+  
+  // Mixed Answer Keys
+  const correctAnswers = {
+    1: 'B', 2: 'B', 3: 'C', 4: 'B', 5: 'A',
+    6: 'A', 7: 'B', 8: 'C', 9: 'B', 10: 'A',
+    11: 'B', 12: 'A', 13: 'A', 14: 'B', 15: 'B',
+    16: 'A', 17: 'A', 18: 'B', 19: 'A', 20: 'A',
+    21: 'A', 22: 'B', 23: 'A', 24: 'A', 25: 'B',
+    26: 'B', 27: 'B', 28: 'A', 29: 'B', 30: 'A',
+    31: 'B', 32: 'B', 33: 'B', 34: 'B', 35: 'B',
+    36: 'B', 37: 'B', 38: 'B', 39: 'B', 40: 'A',
+    41: 'A', 42: 'C', 43: 'B', 44: 'A', 45: 'B'
+  };
+
+  // YOUR NEW APPS SCRIPT WEB APP URL:
+  const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbz2B7UtTHjGdub-lMn7X-KFmvPpSZDFDwYTrtg3O4DxeYjJbHHKre7L1tFceIFAxt8P/exec";
+
+  function startTest() {
+    const name = document.getElementById('student-name').value.trim();
+    const year = document.getElementById('student-year').value;
+    if (!name || !year) {
+      alert("Please enter your name and select your year level before starting.");
+      return;
+    }
+    document.getElementById('page-0').classList.remove('active');
+    currentPage = 1;
+    document.getElementById('page-1').classList.add('active');
+    document.getElementById('quiz-nav').style.display = 'flex';
+    updateProgress();
+  }
+
+  function selectOpt(qNum, option) {
+    userAnswers[qNum] = option;
+    const btns = document.querySelectorAll('#page-' + qNum + ' .option-btn');
+    btns.forEach(b => b.classList.remove('selected'));
+    event.target.classList.add('selected');
+  }
+
+  function changePage(dir) {
+    if (dir === 1 && !userAnswers[currentPage]) {
+      alert("Please choose an answer before going to the next question.");
+      return;
+    }
+
+    document.getElementById('page-' + currentPage).classList.remove('active');
+    currentPage += dir;
+
+    if (currentPage > totalPages) {
+      document.getElementById('quiz-nav').style.display = 'none';
+      submitTest();
+      return;
+    }
+
+    document.getElementById('page-' + currentPage).classList.add('active');
+    updateProgress();
+  }
+
+  function updateProgress() {
+    document.getElementById('prev-btn').disabled = (currentPage <= 1);
+    const percent = Math.round((currentPage / totalPages) * 100);
+    document.getElementById('progress').style.width = percent + '%';
+  }
+
+  function submitTest() {
+    let score = 0;
+    const qResults = {};
+    for (let i = 1; i <= 45; i++) {
+      const isCorrect = userAnswers[i] === correctAnswers[i];
+      if (isCorrect) score++;
+      qResults['q' + i] = isCorrect ? 'Correct' : 'Incorrect (' + userAnswers[i] + ')';
+    }
+
+    const percentage = Math.round((score / 45) * 100);
+    let level = "";
+    let scaleScore = "";
+    let feedback = "";
+
+    if (score >= 36) {
+      level = "Above Phase 3 (Strong Mastery)";
+      scaleScore = "70 - 90+ Scale Points";
+      feedback = "Outstanding effort! You demonstrate excellent mastery across Phase 3 mathematics, including complex algebra, multi-step word problems, rational numbers, and spatial measurement.";
+    } else if (score >= 23) {
+      level = "At Phase 3 (Consolidating)";
+      scaleScore = "50 - 70 Scale Points";
+      feedback = "Great work! You sit securely within Phase 3 expectation. Focus on reviewing proportional reasoning, algebraic simplifying, and multi-unit metric conversions to reach top precision.";
+    } else {
+      level = "Working Towards Phase 3";
+      scaleScore = "30 - 50 Scale Points";
+      feedback = "Good try! You are currently working towards Phase 3 expectations. Focus on practicing basic place value operations, single-step fractions, and primary area/perimeter formulas.";
+    }
+
+    document.getElementById('res-name').textContent = document.getElementById('student-name').value;
+    document.getElementById('res-year').textContent = document.getElementById('student-year').value;
+    document.getElementById('res-score').textContent = score;
+    document.getElementById('res-percent').textContent = percentage;
+    document.getElementById('res-scale').textContent = scaleScore;
+    document.getElementById('status-badge').textContent = level;
+    document.getElementById('res-feedback-text').textContent = feedback;
+    document.getElementById('page-results').classList.add('active');
+
+    fetch(APPS_SCRIPT_URL, {
+      method: "POST",
+      mode: "no-cors",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        name: document.getElementById('student-name').value,
+        year: document.getElementById('student-year').value,
+        score: score,
+        percentage: percentage,
+        curriculumLevel: level,
+        scaleScore: scaleScore,
+        ...qResults,
+        feedback: feedback
+      })
+    });
+  }
+
+  function teacherAccess() {
+    const pin = prompt("Enter Teacher Security PIN:");
+    if (pin === "1335") {
+      alert("PIN Accepted! Opening Google Sheet database.");
+      window.open("https://docs.google.com", "_blank");
+    } else {
+      alert("Incorrect PIN.");
+    }
+  }
+</script>
+</body>
+</html>
